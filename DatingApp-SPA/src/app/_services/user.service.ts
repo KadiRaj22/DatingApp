@@ -9,6 +9,7 @@ import { User } from '../_models/user';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   baseUrl = environment.apiUrl;
 
@@ -20,6 +21,10 @@ export class UserService {
 
   getUser(id): Observable<User> {
     return this.http.get<User>(this.baseUrl + 'users/' + id);
+  }
+
+  updateUser(id: number, user: User) {
+    return this.http.put(this.baseUrl + 'users/' + id, user);
   }
 
 }
